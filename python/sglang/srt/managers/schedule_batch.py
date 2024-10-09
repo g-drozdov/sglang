@@ -63,7 +63,7 @@ class FINISH_MATCHED_TOKEN(BaseFinishReason):
 
     def to_json(self):
         return {
-            "type": "stop",  # to match OpenAI API's return value
+            "type": "eos:" + str(self.matched),  # to match OpenAI API's return value
             "matched": self.matched,
         }
 
@@ -75,7 +75,7 @@ class FINISH_MATCHED_STR(BaseFinishReason):
 
     def to_json(self):
         return {
-            "type": "stop",  # to match OpenAI API's return value
+            "type": "stop:" + str(self.matched),  # to match OpenAI API's return value
             "matched": self.matched,
         }
 
